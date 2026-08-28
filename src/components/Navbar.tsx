@@ -94,16 +94,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           
           {/* Brand Logo & Name */}
           <a href="#" className="flex items-center space-x-3 group">
-            <div className="relative">
-              <img 
-                src="/logo.jpg" 
-                alt="Ahlul Khair Indonesia Logo" 
-                className="h-11 w-11 sm:h-12 sm:w-12 object-contain rounded-xl shadow-sm border border-brand-green-100 group-hover:scale-105 transition-transform" 
-              />
-              <span className="absolute -bottom-1 -right-1 bg-brand-gold-500 text-brand-green-950 text-[9px] font-extrabold px-1 rounded-full border border-white shadow-xs">
-                OFFICIAL
-              </span>
-            </div>
+            <img 
+              src="/logo.jpg" 
+              alt="Ahlul Khair Indonesia Logo" 
+              className="h-11 w-11 sm:h-12 sm:w-12 object-contain rounded-xl shadow-sm border border-brand-green-100 group-hover:scale-105 transition-transform" 
+            />
             <div className="flex flex-col">
               <span className="font-serif font-bold text-slate-900 text-lg sm:text-xl tracking-tight leading-none">
                 AHLUL KHAIR
