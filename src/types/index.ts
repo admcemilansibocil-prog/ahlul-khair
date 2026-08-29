@@ -62,15 +62,18 @@ export type PaymentMethodType =
   | 'va_mandiri'
   | 'va_bri'
   | 'va_bni'
+  | 'va_permata'
+  | 'credit_card'
   | 'gopay'
   | 'ovo'
   | 'dana'
-  | 'shopeepay';
+  | 'shopeepay'
+  | 'alfamart';
 
 export interface PaymentMethodOption {
   id: PaymentMethodType;
   name: string;
-  category: 'qris' | 'va' | 'ewallet';
+  category: 'qris' | 'va' | 'ewallet' | 'card' | 'retail';
   icon: string;
   accountNumber?: string;
   accountName?: string;
@@ -78,16 +81,21 @@ export interface PaymentMethodOption {
   instructions: string[];
 }
 
-export interface DonationSubmission {
-  campaignId: string;
-  campaignTitle: string;
-  amount: number;
-  donorName: string;
-  donorEmail: string;
-  donorPhone: string;
-  isAnonymous: boolean;
-  prayer?: string;
-  paymentMethod: PaymentMethodType;
+export type GatewayProviderType = 'midtrans' | 'xendit' | 'direct';
+
+export interface PaymentGatewayConfig {
+  activeProvider: GatewayProviderType | 'smart';
+  isProduction: boolean;
+  midtrans: {
+    clientKey: string;
+    serverKey: string;
+    merchantId: string;
+  };
+  xendit: {
+    publicKey: string;
+    secretKey: string;
+    webhookToken: string;
+  };
 }
 
 export interface CompletedTransaction {
@@ -110,6 +118,10 @@ export interface CompletedTransaction {
   createdAt: string;
   expiredAt: string;
   status: 'pending' | 'verified';
+  gatewayProvider?: GatewayProviderType;
+  gatewayTransactionId?: string;
+  gatewayPaymentUrl?: string;
+  gatewaySnapToken?: string;
 }
 
 export interface PrayerItem {
